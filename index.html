@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bevy/Conway's GoL</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔴</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&amp;display=swap" rel="stylesheet">
+
+<style>
+    #bevy{
+        width: 500px;
+        height: 500px;
+        margin: 0 auto;
+        border-style: solid;
+        border: double black 10px;
+        border-image: url("assets/border.png") 20 20;
+    }
+    div.text{
+        font-family: 'Permanent Marker';
+        text-align: center;
+    }
+    
+    .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }   
+
+
+    body {
+        background: repeating-linear-gradient(
+            145deg,
+            whitesmoke 0,
+            whitesmoke 3px,
+            white 2px,
+            white 15px
+        );
+    }
+
+</style>
+<link rel="preload" href="./bevy_app_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+<link rel="modulepreload" href="./bevy_app.js"></head>
+
+
+<body>
+    <script type="module">
+        import init from './bevy_app.js';
+        await init('./bevy_app_bg.wasm');
+    </script>
+    <div class="text">
+        <p style="font-size: xx-large;">Conway's Game of Life Written in Rust / Bevy</p>
+    </div>
+
+    <div class="box">
+        <canvas id="bevy"></canvas>
+    </div>
+
+    <div class="text">
+        <p style="font-size: xx-large;">S or SPACE -&gt; Stop / Start Simulation</p>
+        <p style="font-size: xx-large;">R -&gt; Restart Simulation</p>
+    </div>
+</body>
+</html>
